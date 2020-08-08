@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.sventetsky.springframework.boot.api_service_logging_spring_boot_starter.ApiServiceLoggingConfiguration
