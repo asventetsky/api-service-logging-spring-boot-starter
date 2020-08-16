@@ -1,10 +1,14 @@
 package org.sventetsky.springframework.boot.api_service_logging_spring_boot_starter.logger.config;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 
 @Slf4j
-public class DefaultLoggingConfig implements LoggingConfig {
+@RequiredArgsConstructor
+public class PropertiesLoggingConfig implements LoggingConfig {
+
+    private final LoggingConfigProperties properties;
 
     @Override
     public Logger getLogger() {
@@ -13,16 +17,16 @@ public class DefaultLoggingConfig implements LoggingConfig {
 
     @Override
     public boolean isLoggingEnabled() {
-        return true;
+        return properties.isLoggingEnabled();
     }
 
     @Override
     public boolean isLogPayload() {
-        return true;
+        return properties.isLogPayload();
     }
 
     @Override
     public boolean isLogHeaders() {
-        return true;
+        return properties.isLogHeaders();
     }
 }
