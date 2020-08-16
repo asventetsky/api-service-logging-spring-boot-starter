@@ -1,5 +1,6 @@
 package org.sventetsky.springframework.boot.api_service_logging_spring_boot_starter.logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 import org.sventetsky.springframework.boot.api_service_logging_spring_boot_starter.appender.*;
@@ -7,7 +8,8 @@ import org.sventetsky.springframework.boot.api_service_logging_spring_boot_start
 
 public class DefaultApiServiceLogger implements ApiServiceLogger {
 
-    private final LoggingConfig loggingConfig;
+    @Autowired
+    private LoggingConfig loggingConfig;
 
     private RequestAppender lineRequestAppender = new LineRequestAppender();
     private RequestAppender headersRequestAppender = new HeadersRequestAppender();
@@ -16,10 +18,6 @@ public class DefaultApiServiceLogger implements ApiServiceLogger {
     private ResponseAppender lineResponseAppender = new LineResponseAppender();
     private ResponseAppender headersResponseAppender = new HeadersResponseAppender();
     private ResponseAppender payloadResponseAppender = new PayloadResponseAppender();
-
-    public DefaultApiServiceLogger(LoggingConfig loggingConfig) {
-        this.loggingConfig = loggingConfig;
-    }
 
     @Override
     public void logRequest(ContentCachingRequestWrapper request) {
